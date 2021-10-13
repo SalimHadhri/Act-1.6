@@ -45,9 +45,11 @@ public class PlayListeImpl implements PlayListe{
 
 	public void afficherMusiquesPlaylist() {
 		for(int i = 0 ; i<allMusique.length;i++) {
+			if (this.allMusique[i]!=null) {
 			this.allMusique[i].afficherMusique();
 			
-		}	
+		}
+		}
 	}
 
 	public void ajouterMusique(MusiqueImpl m) {
@@ -80,7 +82,43 @@ public class PlayListeImpl implements PlayListe{
 	
 
 	public void eliminerDoublons() {
-	}
+		
+		
+		PlayListeImpl newPlaylist = new PlayListeImpl() ;
+
+		boolean stop = false ;
+		MusiqueImpl[] musics = new MusiqueImpl[allMusique.length] ;
+		//newPlaylist.setAllMusique(musics);
+		//newPlaylist.se
+		//newPlaylist.ajouterMusique(allMusique[0]);
+		MusiqueImpl compare = allMusique[0] ;
+		musics[0] = compare ;
+		
+		//boolean add = false ;
+		for (int i =0 ;i<allMusique.length;i++) {
+			
+			boolean add = false ;
+			for(int j=1 ; j<allMusique.length;j++) {
+						if (!compare.verifierInstance(allMusique[j])&& add==false) {	
+							musics[j]=allMusique[j]; 
+							
+						}
+						else if (compare.verifierInstance(allMusique[j])&& add==false) {
+							//add = false  ;
+							compare = allMusique[j] ;
+							add = true ;
+						}
+						
+			}
+
+			
+		}
+		allMusique= musics ;
+
+			
+		}
+
+	
 		
 		
 		
@@ -226,34 +264,4 @@ public class PlayListeImpl implements PlayListe{
 
 }
 
-/*MusiqueImpl musique = allMusique[0] ;
 
-//for (int i=1 ; i <allMusique.length ; i++ ) {
-MusiqueImpl[] noDoublon = new MusiqueImpl[allMusique.length] ;
-int k =0 ;
-//noDoublon[k] = allMusique[0] ;
-MusiqueImpl min  = allMusique[0] ;
-boolean add = false ;
-			//for (int j=0;j<allMusique.length;j++) {
-				add=false ;
-						for (int i =1 ;i<allMusique.length;i++ ) {
-							
-							if (allMusique[i].equals(min) && add == false) {
-									
-									add = true ;
-									
-							
-						}else if (!allMusique[i].equals(min) && add == false) {
-							noDoublon[k] = allMusique[i] ;
-							min =  allMusique[i] ;
-							k++ ;
-						}
-							
-
-			}
-						setAllMusique(noDoublon);			
-
-}
-			
-			
-*/
