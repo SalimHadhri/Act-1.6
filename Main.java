@@ -5,7 +5,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		MusiqueImpl mus1 = new MusiqueImpl("Hello","eminem","dr dre","rap") ;
-		MusiqueImpl mus2 = new MusiqueImpl("byby","melisa","Mr XX","pop") ;
+		MusiqueImpl mus2 = new MusiqueImpl("byby","melisa","mr XX","pop") ;
 		MusiqueImpl mus3 = new MusiqueImpl("sousou","doudou","fli","pop") ;
 		MusiqueImpl mus4 = new MusiqueImpl("doudou","koukou","didi","rap") ;
 		MusiqueImpl mus5 = new MusiqueImpl("sasir","camel","lala","country") ;
@@ -44,11 +44,38 @@ public class Main {
 		pl1.afficherMusiquesPlaylist();
 		
 		System.out.println("*******************************************************************************");
-		System.out.println("eliminer doublon") ;
+		/*System.out.println("eliminer doublon") ;
 		
 		pl1.eliminerDoublons(); 
 		
-		pl1.afficherMusiquesPlaylist();
+		pl1.afficherMusiquesPlaylist();**/
+		System.out.println("*******************************************************************************");
+		System.out.println("afficher deux playlist") ;
+		pl1.afficherDeuxPlaylist(pl2);
+		
+		System.out.println("*******************************************************************************");
+		System.out.println("trie playlist par autheur") ;
+		System.out.println(" playlist non triée :") ;
+		pl2.afficherMusiquesPlaylist();
+		System.out.println("*******************************************************************************");
+		System.out.println(" playlist  triée par autheur:") ;
+		MusiqueImpl[]  musiqueTrie = pl2.triePlaylistAuteur() ;
+		pl2.setAllMusique(musiqueTrie);
+		pl2.afficherMusiquesPlaylist(); 
+		
+		System.out.println("*******************************************************************************");
+		System.out.println("trie playlist par interprete") ;
+		System.out.println(" playlist non triée :") ;
+		pl2.afficherMusiquesPlaylist();
+		System.out.println("*******************************************************************************");
+		System.out.println(" playlist  triée par interpreter:") ;
+		MusiqueImpl[]  musiqueTrie2 = pl2.triePlaylistinterprete() ;
+		pl2.setAllMusique(musiqueTrie2);
+		pl2.afficherMusiquesPlaylist(); 
+			
+			
+		}
+		
 		
 		
 		
@@ -56,4 +83,4 @@ public class Main {
 		
 	}
 
-}
+
