@@ -80,34 +80,9 @@ public class PlayListeImpl implements PlayListe{
 	
 
 	public void eliminerDoublons() {
-		
-		MusiqueImpl musique = allMusique[0] ;
-		
-		//for (int i=1 ; i <allMusique.length ; i++ ) {
-		MusiqueImpl[] noDoublon = new MusiqueImpl[allMusique.length] ;
-		int k =0 ;
-		noDoublon[k] = allMusique[0] ;
-		boolean add = false ;
-					for (int j=0;j<allMusique.length;j++) {
-						add=false ;
-								for (int i =1 ;i<allMusique.length;i++ ) {
-									
-									if (allMusique[j].equals(allMusique[i]) && add == false && i< allMusique.length) {
-											
-											add = true ;
-									
-								}else {
-									noDoublon[k] = allMusique[j] ;
-								}
-									
-
-					}
-								k++;
-
-		}
-					
-					setAllMusique(noDoublon);
 	}
+		
+		
 		
 	
 
@@ -120,10 +95,9 @@ public class PlayListeImpl implements PlayListe{
 	
 	public  MusiqueImpl minPosPlaylistAuteur (MusiqueImpl[] mm) {
 
-		int x = MAX_MUSIQUES ;
 		MusiqueImpl min = mm[0] ;
 		
-		for (int i =1 ; i< x ; i++) {
+		for (int i =1 ; i< mm.length ; i++) {
 			if (min.getAutheur().compareTo(mm[i].getAutheur()) >= 0 ){
 				min = mm[i] ;
 			}
@@ -133,10 +107,9 @@ public class PlayListeImpl implements PlayListe{
 	
 	public  MusiqueImpl minPosinterprete (MusiqueImpl[] mm) {
 
-		int x = MAX_MUSIQUES ;
 		MusiqueImpl min = mm[0] ;
 		
-		for (int i =1 ; i< x ; i++) {
+		for (int i =1 ; i< mm.length ; i++) {
 			if (min.getInterprete().compareTo(mm[i].getInterprete()) >= 0 ){
 				min = mm[i] ;
 			}
@@ -147,14 +120,13 @@ public class PlayListeImpl implements PlayListe{
 
 	public  MusiqueImpl[] triePlaylistAuteur() {
 
-		int ln =  MAX_MUSIQUES;
-		MusiqueImpl[] tabSorted = new MusiqueImpl[ln] ;
+		MusiqueImpl[] tabSorted = new MusiqueImpl[allMusique.length] ;
 
-		for (int i = 0 ; i< MAX_MUSIQUES ;i++) {
+		for (int i = 0 ; i< allMusique.length ;i++) {
 			MusiqueImpl[] copy = Arrays.copyOfRange(allMusique, i, allMusique.length);
-			MusiqueImpl min = minPosPlaylistAuteur(allMusique) ;
+			MusiqueImpl min = minPosPlaylistAuteur(copy) ;
 
-			for (int j =1  ; j<MAX_MUSIQUES ; j++){
+			for (int j =1  ; j<allMusique.length ; j++){
 				if (allMusique[j].equals(min)){
 					tabSorted[i]= min;
 					allMusique[j]=allMusique[i] ;
@@ -169,14 +141,13 @@ public class PlayListeImpl implements PlayListe{
 
 	public  MusiqueImpl[] triePlaylistinterprete() {
 
-		int ln =  MAX_MUSIQUES;
-		MusiqueImpl[] tabSorted = new MusiqueImpl[ln] ;
+		MusiqueImpl[] tabSorted = new MusiqueImpl[allMusique.length] ;
 
-		for (int i = 0 ; i< MAX_MUSIQUES ;i++) {
+		for (int i = 0 ; i< allMusique.length ;i++) {
 			MusiqueImpl[] copy = Arrays.copyOfRange(allMusique, i, allMusique.length);
-			MusiqueImpl min = minPosinterprete(allMusique) ;
+			MusiqueImpl min = minPosinterprete(copy) ;
 
-			for (int j =1  ; j<MAX_MUSIQUES ; j++){
+			for (int j =1  ; j<allMusique.length ; j++){
 				if (allMusique[j].equals(min)){
 					tabSorted[i]= min;
 					allMusique[j]=allMusique[i] ;
@@ -254,3 +225,35 @@ public class PlayListeImpl implements PlayListe{
 	
 
 }
+
+/*MusiqueImpl musique = allMusique[0] ;
+
+//for (int i=1 ; i <allMusique.length ; i++ ) {
+MusiqueImpl[] noDoublon = new MusiqueImpl[allMusique.length] ;
+int k =0 ;
+//noDoublon[k] = allMusique[0] ;
+MusiqueImpl min  = allMusique[0] ;
+boolean add = false ;
+			//for (int j=0;j<allMusique.length;j++) {
+				add=false ;
+						for (int i =1 ;i<allMusique.length;i++ ) {
+							
+							if (allMusique[i].equals(min) && add == false) {
+									
+									add = true ;
+									
+							
+						}else if (!allMusique[i].equals(min) && add == false) {
+							noDoublon[k] = allMusique[i] ;
+							min =  allMusique[i] ;
+							k++ ;
+						}
+							
+
+			}
+						setAllMusique(noDoublon);			
+
+}
+			
+			
+*/
