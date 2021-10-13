@@ -12,6 +12,7 @@ public class Main {
 		MusiqueImpl mus6 = new MusiqueImpl("nounou","amine","khaled","tango") ;
 		MusiqueImpl mus7 = new MusiqueImpl("loulou","eminem","loulou","rap") ;
 		MusiqueImpl mus8 = new MusiqueImpl("friend","ennemy","love","pop") ;
+		MusiqueImpl mus9 = new MusiqueImpl("koukoiu","koukou","cc","cc") ;
 		
 		
 		System.out.println("AFFICHAGE MUSIQUE");
@@ -40,15 +41,19 @@ public class Main {
 		System.out.println("*******************************************************************************");
 		System.out.println("ajouterMusique");
 		pl1.ajouterMusique(mus4);
+		pl1.ajouterMusique(mus2);
 		pl1.ajouterMusique(mus1);	
+		pl1.ajouterMusique(mus8);		
+		pl1.ajouterMusique(mus9);
+		pl1.ajouterMusique(mus2);
 		pl1.afficherMusiquesPlaylist();
 		
 		System.out.println("*******************************************************************************");
-		/*System.out.println("eliminer doublon") ;
+		System.out.println("eliminer doublon") ;
 		
 		pl1.eliminerDoublons(); 
 		
-		pl1.afficherMusiquesPlaylist();**/
+		pl1.afficherMusiquesPlaylist();
 		System.out.println("*******************************************************************************");
 		System.out.println("afficher deux playlist") ;
 		pl1.afficherDeuxPlaylist(pl2);
